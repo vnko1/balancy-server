@@ -1,3 +1,26 @@
+import { FindManyOptions, FindOptionsWhere, Repository } from "typeorm";
+import { AppService } from "../app/app.service";
+import { InstanceInterface } from "./instance.interface";
+
+export abstract class InstanceService<T>
+  extends AppService
+  implements InstanceInterface<T>
+{
+  constructor(private readonly repository: Repository<T>) {
+    super();
+  }
+
+  findAll(opt?: FindManyOptions) {
+    return this.repository.find(opt);
+  }
+
+  findOne(opt: FindOptionsWhere<T>) {
+    return this.repository.findOneBy(opt);
+  }
+
+  //   findOne() {}
+}
+
 // import { AppService } from '../app/app.service';
 
 // import { InstanceInterface } from './instance.interface';

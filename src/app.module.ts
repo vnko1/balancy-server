@@ -2,6 +2,8 @@ import * as fs from "fs";
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { User } from "./modules/user/user.entity";
+import { UserModule } from "./modules/user/user.module";
 
 @Module({
   imports: [
@@ -17,10 +19,11 @@ import { TypeOrmModule } from "@nestjs/typeorm";
         rejectUnauthorized: true,
         ca: fs.readFileSync(process.env.DATABASE_CA_CERT_PATH).toString(),
       },
-      entities: [],
+      entities: [User],
       autoLoadEntities: true,
       synchronize: true,
     }),
+    UserModule,
   ],
 })
 export class AppModule {}
