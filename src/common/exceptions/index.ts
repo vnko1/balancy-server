@@ -1,1 +1,1 @@
-export { AppHttpExceptionFilter } from "./app/app.exception";
+export { HttpExceptionFilter } from "./httpExceptionFilter/httpExceptionFilter.exception";

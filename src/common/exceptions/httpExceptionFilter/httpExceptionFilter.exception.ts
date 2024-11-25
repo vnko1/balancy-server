@@ -9,10 +9,7 @@ import {
 import { AppService } from "src/common/services";
 
 @Catch()
-export class AppHttpExceptionFilter
-  extends AppService
-  implements ExceptionFilter
-{
+export class HttpExceptionFilter extends AppService implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const response = this.exceptionResponse(host);
 
