@@ -7,4 +7,8 @@ export class UsersService extends AppService {
   constructor(private readonly userService: UserService) {
     super();
   }
+
+  getAll() {
+    return this.userService.findAll();
+  }
 }
